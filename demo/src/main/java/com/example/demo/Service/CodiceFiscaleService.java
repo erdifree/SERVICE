@@ -82,7 +82,6 @@ public class CodiceFiscaleService {
                 return flag;
             return flag==true;
         }
-
         /**
          * Verifies the basic syntax, length and control code of the given CF.
          * @param cf Raw CF, possibly with spaces.

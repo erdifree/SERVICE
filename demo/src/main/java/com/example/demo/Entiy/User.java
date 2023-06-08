@@ -22,24 +22,18 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class User {
-
     @Id
     @NotEmpty
     @Min(value = 16, message = "La lunghezza minima del codice fiscale è 16 caratteri.")
     @Max(value = 16, message = "La lunghezza massima del codice fiscale è 16 caratteri.")
     @Column(name = "codice_fiscale")
     private String cf;
-
-
     @Column(name ="nome" )
     @NotNull
     private String nome;
-
-
     @Column(name ="cognome" )
     @NotNull
     private String cognome;
-
     @Column(name = "data-nascita-titolare")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull

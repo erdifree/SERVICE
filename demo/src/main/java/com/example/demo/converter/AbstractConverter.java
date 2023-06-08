@@ -19,7 +19,6 @@ public abstract class AbstractConverter<Entity,DTO> implements Converter<Entity,
 
     public List<DTO> toDTOList (Iterable<Entity> listEntity) {
         List<DTO> list = new ArrayList<DTO>();
-
         if(listEntity != null) {
             for (Entity entity:listEntity) {
                 DTO dto = toDTO(entity);

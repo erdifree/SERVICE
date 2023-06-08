@@ -1,6 +1,7 @@
 package com.example.demo.Entiy;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -21,12 +22,14 @@ import java.util.Set;
 @NoArgsConstructor
 public class DatiTitolare extends User {
     @OneToOne
+    @JsonManagedReference
     private Credenziali credenziali;
 
     @OneToOne
+    @JsonManagedReference
     private DatiAccompagnatore datiAccompagnatore;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "datiTitolare")
-    @JsonManagedReference
     private Set<Request> requestSet;
 }

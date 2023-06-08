@@ -14,9 +14,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -67,9 +67,8 @@ public class CredenzialiService {
     /*Metodo privato che verifica le credenziali con accompagnatore inserito */
     private BodyResponse verificaCredenzialeConAccompagnatore(CredenzialiRequest credenzialiRequest) {
         if (CodiceFiscaleService.validate(credenzialiRequest.getCfTitolare()) == true) {
-            Optional<DatiTitolare> responseTitolare = datiUtentiRepositopry.findByCf(
-                    credenzialiRequest.getCfTitolare()
-            );
+            Optional<DatiTitolare> responseTitolare = datiUtentiRepositopry.findByCf(credenzialiRequest.getCfTitolare());
+
             if (responseTitolare.isEmpty()) {
                 throw new ApiRequestExeption(ExceptionErrorEnum.UTENTE_NON_REGISTRATO.getMessage());
             } else {
